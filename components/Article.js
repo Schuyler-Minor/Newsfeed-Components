@@ -72,7 +72,7 @@ const data = [
         Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
   },
   {
-    title: 'Professional Software Development in 2019',
+    title: 'Schuyler Is the Best',
     date: 'Jan 1st, 2019',
     firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
           hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
@@ -114,3 +114,41 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+function articleMaker(articleObj) {
+  const articleWrapper = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const artPOne = document.createElement('p');
+  const artPTwo = document.createElement('p');
+  const artPThree = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+ articleWrapper.classList.add('article');
+ articleDate.classList.add('date');
+ expandButton.classList.add('expandButton');
+
+articleWrapper.appendChild(articleTitle)
+articleWrapper.appendChild(articleDate)
+articleWrapper.appendChild(artPOne)
+articleWrapper.appendChild(artPTwo)
+articleWrapper.appendChild(artPThree)
+articleWrapper.appendChild(expandButton)
+
+articleTitle.textContent = articleObj.title;
+articleDate.textContent = articleObj.date
+artPOne.textContent = articleObj.firstParagraph;
+artPTwo.textContent = articleObj.secondParagraph;
+artPThree.textContent = articleObj.thirdParagraph;
+expandButton.textContent = "+"
+
+
+expandButton.addEventListener('click', () => {
+  articleWrapper.classList.toggle('article-open')
+})
+  return articleWrapper
+};
+
+data.forEach(article => {
+  document.querySelector('div.articles').appendChild(articleMaker(article))
+})
